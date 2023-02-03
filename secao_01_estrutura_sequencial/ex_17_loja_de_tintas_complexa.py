@@ -26,7 +26,29 @@ Acrescente 10% de folga e sempre arredonde os valores para cima, isto é, consid
     Para menor custo, você pode comprar 2 lata(s) de 18 litros e 1 galão(ões) de 3.6 litros a um custo de R$ 185. Vão sobrar 2.6 litro(s) de tinta.
 
 """
+import math
 
 
 def calcular_latas_e_preco_de_tinta():
     """Escreva aqui em baixo a sua solução"""
+
+    area = float(input('Informe a área a ser pintada em mt2: '))
+    litro = round((area / 6) * 1.12)
+    latas18 = math.ceil(litro / 18)
+    valor18 = latas18 * 80
+    sobra18 = math.ceil(latas18 * 18 - litro)
+    latas3 = math.ceil(litro / 3.6)
+    valor3 = latas3 * 25
+    sobra3 = round(latas3 * 3.6 - litro, 1)
+    mixlatas18 = math.trunc(litro / 18)
+    mixlata3 = math.ceil((litro - (mixlatas18 * 18)) / 3.6)
+    sobrat = round(mixlatas18 * 18 + mixlata3 * 3.6 - litro, 1)
+    total_mix = (mixlatas18 * 80) + (mixlata3 * 25)
+
+    print(f'Você deve comprar {litro} litros de tinta.')
+    print(f'Você pode comprar {latas18} lata(s) de 18 litros a um custo de R$ {valor18}. Vão sobrar {sobra18:.1f} '
+          f'litro(s) de tinta.')
+    print(f'Você pode comprar {latas3} lata(s) de 3.6 litros a um custo de R$ {valor3}. Vão sobrar {sobra3:.1f} '
+          f'litro(s) de tinta.')
+    print(f'Para menor custo, você pode comprar {mixlatas18} lata(s) de 18 litros e {mixlata3} galão(ões) de 3.6 '
+          f'litros a um custo de R$ {total_mix}. Vão sobrar {sobrat} litro(s) de tinta.')
