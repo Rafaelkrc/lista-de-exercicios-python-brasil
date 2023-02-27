@@ -29,5 +29,43 @@ Mostre o restultado com duas casas decimais
 """
 
 
-def fazer_operacao_e_classificar(n_1: float, n_2: float, operacao: str):
+def fazer_operacao_e_classificar(num1: float, num2: float, opcao: str):
     """Escreva aqui em baixo a sua solução"""
+    resultado = 0
+    par_str = pos_str = int_str = ''
+
+    if opcao == '+':
+        resultado = num1 + num2
+    elif opcao == '-':
+        resultado = num1 - num2
+    elif opcao == '*':
+        resultado = num1 * num2
+    elif opcao == '/':
+        resultado = num1 / num2
+    elif opcao != 1 or 2 or 3 or 4:
+        print('Opção inválida! Tente novamente!')
+
+    if resultado % 2 == 0:
+        par_str = 'par,'
+    elif resultado % 2 != 0:
+        par_str = 'impar,'
+
+    if resultado > 0:
+        pos_str = 'positivo'
+    elif resultado < 0:
+        pos_str = 'negativo'
+    else:
+        pos_str = 'neutro'
+
+    if int(resultado) == resultado:
+        int_str = 'inteiro'
+    else:
+        int_str = 'decimal'
+
+    if int_str == 'decimal':
+        print(f'Resultado: {resultado:.2f}')
+        print(f'Número é {pos_str} e {int_str}.')
+    else:
+        print(f'Resultado: {resultado:.2f}')
+        print(f'Número é {par_str} {pos_str} e {int_str}.')
+

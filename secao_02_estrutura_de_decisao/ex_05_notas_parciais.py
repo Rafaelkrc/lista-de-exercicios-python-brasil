@@ -19,5 +19,12 @@ Obs: 0 <= nota <= 10
 """
 
 
-def notas_parciais(nota_1, nota_2):
+def notas_parciais(n1, n2):
     """Escreva aqui em baixo a sua solução"""
+    media = (n1 + n2) / 2
+    if 7 <= media <= 9.9:
+        print("""'Aprovado'""")
+    elif media < 7:
+        print("""'Reprovado'""")
+    elif media == 10:
+        print("""'Aprovado com Distinção'""")

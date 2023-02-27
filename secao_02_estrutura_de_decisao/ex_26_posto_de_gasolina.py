@@ -33,5 +33,17 @@ Mostre o restultado com duas casas decimais
 """
 
 
-def calcular_abastecimento(litros_de_combustivel: float, tipo_de_combustivel: str) -> str:
+def calcular_abastecimento(litros: float, tipo: str) -> str:
     """Escreva aqui em baixo a sua solução"""
+    if tipo == 'A' and litros <= 20:
+        valor = (litros * 1.9) - (litros * 1.9 * 0.03)
+        print(f"'{litros} litro(s) de álcool custa(m): R$ {litros * 1.9:.2f}. Com 3% de desconto, fica R$ {valor:.2f}'")
+    elif tipo == 'A' and litros > 20:
+        valor = (litros * 1.9) - (litros * 1.9 * 0.05)
+        print(f"'{litros} litro(s) de álcool custa(m): R$ {litros * 1.9:.2f}. Com 5% de desconto, fica R$ {valor:.2f}'")
+    elif tipo == 'G' and litros <= 20:
+        valor = (litros * 2.5) - (litros * 2.5 * 0.04)
+        print(f"'{litros} litro(s) de gasolina custa(m): R$ {litros * 2.5:.2f}. Com 4% de desconto, fica R$ {valor:.2f}'")
+    else:
+        valor = (litros * 2.5) - (litros * 2.5 * 0.06)
+        print(f"'{litros} litro(s) de gasolina custa(m): R$ {litros * 2.5:.2f}. Com 6% de desconto, fica R$ {valor:.2f}'")

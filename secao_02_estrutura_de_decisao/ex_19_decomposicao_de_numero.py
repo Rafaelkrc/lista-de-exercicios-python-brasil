@@ -50,5 +50,49 @@ Observando os termos no plural a colocação do "e", da vírgula entre outros. E
 """
 
 
-def decompor_numero(numero: int):
+def decompor_numero(num: int):
     """Escreva aqui em baixo a sua solução"""
+    centenas_str = dezenas_str = unidades_str = ''
+    centenas_int, num1 = divmod(num, 100)
+    partes_numericas = 0
+
+    if centenas_int == 1:
+        centenas_str = '1 centena'
+        partes_numericas += 1
+    elif centenas_int > 1:
+        centenas_str = f"{centenas_int} centenas"
+        partes_numericas += 1
+
+    dezenas_int, num1 = divmod(num1, 10)
+
+    if dezenas_int == 1:
+        dezenas_str = '1 dezena'
+        partes_numericas += 1
+    elif dezenas_int > 1:
+        dezenas_str = f'{dezenas_int} dezenas'
+        partes_numericas += 1
+
+    if num1 == 1:
+        unidades_str = '1 unidade'
+        partes_numericas += 1
+    elif num1 > 1:
+        unidades_str = f'{num1} unidades'
+        partes_numericas += 1
+
+    if partes_numericas == 0:
+        print('Número 0 não possui centenas, dezenas ou unidades')
+    elif partes_numericas == 1 and num < 1000:
+        print(f"'{num} = {centenas_str + dezenas_str + unidades_str}'")
+    elif partes_numericas == 3:
+        print(f"'{num} = {centenas_str}, {dezenas_str} e {unidades_str}'")
+    elif partes_numericas == 2 and num > 0:
+        if centenas_str != '':
+            segunda_parte = dezenas_str + unidades_str
+            print(f"'{num} = {centenas_str} e {segunda_parte}'")
+        else:
+            print(f"'{num} = {dezenas_str} e {unidades_str}'")
+    elif num >= 1000:
+        print("'O número precisa ser menor que 1000'")
+    elif num < 0:
+        print("'O número precisa ser positivo'")
+

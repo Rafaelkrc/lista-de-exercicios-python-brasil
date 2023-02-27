@@ -20,7 +20,13 @@ Faça um Programa que peça uma data no formato dd/mm/aaaa e determine se a mesm
     'Data inválida'
 
 """
+from datetime import datetime
 
 
 def validar_data(data: str):
     """Escreva aqui em baixo a sua solução"""
+    try:
+        datetime.strptime(data, '%d/%m/%Y')
+        return 'Data válida'
+    except ValueError:
+        return 'Data inválida'

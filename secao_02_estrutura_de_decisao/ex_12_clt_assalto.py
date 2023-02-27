@@ -51,5 +51,41 @@ até R$ 99999,99
 """
 
 
-def calcular_salario_liquido(valor_hora: float, horas_trabalhadas: int):
+def calcular_salario_liquido(vlrhora: float, hrtrab: int):
     """Escreva aqui em baixo a sua solução"""
+    salario = vlrhora * hrtrab
+    fgts = salario * 0.11
+    inss = salario * 0.10
+    sindicato = salario * 0.03
+
+    ir = 0
+    irperc = ''
+    if salario <= 900:
+        ir = 0
+        irperc = '0%'
+    elif salario <= 1500:
+        ir = salario * 0.05
+        irperc = '5%'
+    elif salario <= 2500:
+        ir = salario * 0.10
+        irperc = '10%'
+    else:
+        ir = salario * 0.20
+        irperc = '20%'
+
+    totaldesconto = ir + inss + sindicato
+    salarioliquido = salario - totaldesconto
+    salariobruto = f'Salário Bruto: (R$ {vlrhora:.2f} * {hrtrab:.0f})'
+    irs = f'(-) IR ({irperc})'
+    insss = f'(-) INSS (10%)'
+    sindicatos = f'(-) Sindicato (3%)'
+    fgtss = f'FGTS (11%)'
+    totaldescontos = f'Total de descontos'
+    salarioliqui = f'Salário Liquido'
+    print(f'{salariobruto:<35}: R${salario:>9.2f}')
+    print(f'{irs:<35}: R$ {ir:>8.2f}')
+    print(f'{insss:<35}: R$ {inss:>8.2f}')
+    print(f'{sindicatos:<35}: R$ {sindicato:>8.2f}')
+    print(f'{fgtss:<35}: R$ {fgts:>8.2f}')
+    print(f'{totaldescontos:<35}: R$ {totaldesconto:>8.2f}')
+    print(f'{salarioliqui:<35}: R$ {salarioliquido:>8.2f}')

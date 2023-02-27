@@ -57,5 +57,38 @@ Mostre o restultado com duas casas decimais
 """
 
 
-def calcular_preco_da_compra(kilos_de_morango: int, kilos_de_maca: int):
+def calcular_preco_da_compra(morango: int, maca: int):
     """Escreva aqui em baixo a sua solução"""
+    if morango <= 5:
+        precomg = 2.5
+        totalmo = morango * precomg
+    else:
+        precomg = 2.2
+        totalmo = morango * precomg
+    if maca <= 5:
+        preco_maca = 1.8
+        totalma = maca * preco_maca
+    else:
+        preco_maca = 1.5
+        totalma = maca * preco_maca
+
+    totalkg = morango + maca
+    totalcomp = totalmo + totalma
+
+    if totalkg > 8 or totalcomp > 25:
+        percentual = 0.10
+        desconto = totalcomp * percentual
+        totalcomp = totalcomp - desconto
+    else:
+        desconto = 0.00
+
+    morango_valor = '(+)  Morango  - valor:  R$'
+    maca_valor = '(+)  Maça     - valor:  R$'
+    desconto_str = '(-)  Desconto - valor:  R$'
+    valor_total = 'Valor Total:  R$'
+    if morango > 0:
+        print(f'{morango_valor:<26}{totalmo:>6.2f} - quantidade: {morango:^3}kg - preço: R${precomg:>5.2f}/kg')
+    if maca > 0:
+        print(f'{maca_valor:<26}{totalma:>6.2f} - quantidade: {maca:^3}kg - preço: R${preco_maca:>5.2f}/kg')
+    print(f'{desconto_str:<26}{desconto:>6.2f}')
+    print(f'{valor_total:>26}{totalcomp:>6.2f}')
