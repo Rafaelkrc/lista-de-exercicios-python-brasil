@@ -109,3 +109,38 @@ comprados.
 
 def fechar_conta(*itens):
     """Escreva aqui em baixo a sua solução"""
+    menu = {'100': ('Cachorro Quente', 1.20),
+            '101': ('Bauru Simples', 1.30),
+            '102': ('Bauru com Ovo', 1.50),
+            '103': ('Hamburger', 1.20),
+            '104': ('Cheeseburger', 1.30),
+            '105': ('Refrigerante', 1.00)}
+    quantidade_total = 0
+    total_geral = 0
+    precos = {k: preco for (k, (_, preco)) in menu.items()}
+    especificacoes = {k: especificacao for (k, (especificacao, _)) in menu.items()}
+    itens_comprados = {}
+    for codigo, quantidade in itens:
+        itens_comprados[codigo] = itens_comprados.get(codigo, 0) + quantidade
+
+    # Cabeçalho
+    print('_____________________________________________________________________________')
+    print('|                              RESUMO DA CONTA                              |')
+    print('|---------------------------------------------------------------------------|')
+    print('| Epecificação     | Código | Preço Unitário (R$) | Quantidade | Total (R$) |')
+
+    # Itens
+    for codigo, quantidade in itens_comprados.items():
+        quantidade_total += quantidade
+        preco = precos[codigo]
+        especificacao = especificacoes[codigo]
+        total_item = preco * quantidade
+        total_geral += total_item
+        print(f'| {especificacao:16s} | {codigo:<6} | {preco:<19.2f} | {quantidade:10d} | {total_item:10.2f} |')
+
+    print('|---------------------------------------------------------------------------|')
+    print(f'| Total Geral:                                    | {quantidade_total:10d} | {total_geral:10.2f} |')
+    print('-----------------------------------------------------------------------------')
+
+
+
