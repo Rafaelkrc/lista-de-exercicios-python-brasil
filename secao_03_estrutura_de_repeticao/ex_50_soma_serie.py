@@ -29,3 +29,11 @@ Faça um programa que calcule o valor de H com N termos.
 
 def soma_serie(n):
     """Escreva aqui em baixo a sua solução"""
+    d = 1
+    s = [1/1]
+    for i in range(n-1):
+        c = 1
+        d += 1
+        s.append(c/d)
+
+    print(f'H = {sum(s)}')

@@ -37,3 +37,16 @@ Faça um programa que mostre os n termos da Série a seguir:
 
 def imprimir_serie(n):
     """Escreva aqui em baixo a sua solução"""
+    c = 1
+    d = 1
+    s = [1/1]
+    lista = ['1/1']
+    for i in range(n-1):
+        c += 1
+        d += 2
+        res = f"{c}/{d}"
+        lista.append(res)
+        s.append(c/d)
+
+    print((f"S = ") + ' + '.join(lista))
+    print(f'soma = {sum(s)}')
