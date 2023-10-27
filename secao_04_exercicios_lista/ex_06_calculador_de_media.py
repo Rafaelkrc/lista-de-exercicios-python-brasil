@@ -16,4 +16,15 @@ imprima o número de alunos com média maior ou igual a 7.0, e imprima separado 
 
 def calcular_media(*notas) -> int:
     """Escreva aqui em baixo a sua solução"""
+    media_maior = 0
+    media_menor = 0
+    for n in notas:
+        media = sum(n) / 4
+        if media >= 7:
+            media_maior += 1
+        else:
+            media_menor += 1
+
+    print(f'Alunos com media >= 7.0: {media_maior}')
+    print(f'Alunos com media < 7.0: {media_menor}')
 

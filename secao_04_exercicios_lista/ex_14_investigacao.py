@@ -33,3 +33,22 @@ Caso contrário, ele será classificado como "Inocente".
 
 def investigar(*respostas):
     """Escreva aqui em baixo a sua solução"""
+    sim = 0
+
+    for i in respostas:
+        if i == 'Sim':
+            sim += 1
+        else:
+            pass
+
+    if sim == 2:
+        print("'Suspeito'")
+    elif 2 < sim <= 4:
+        print("'Cúmplice'")
+    elif sim == 5:
+        print("'Assassino'")
+    else:
+        print("'Inocente'")
+
+
+
