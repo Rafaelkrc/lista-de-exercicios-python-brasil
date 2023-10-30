@@ -46,5 +46,41 @@ outro número. Após o final da votação, o programa deverá exibir:
 
 def receber_votos(*voto):
     """Escreva aqui em baixo a sua solução"""
+    print('Enquete: Quem foi o melhor jogador?')
+    print('---------------------------------------------------------------')
+    votos = [0] * 23
+    total_de_votos = 0
+
+    for v in voto:
+        print(f'Número do jogador (0=fim): {v}')
+        if v == 0:
+            break
+        if 1 <= v <= 23:
+            votos[v - 1] += 1
+            total_de_votos += 1
+        else:
+            print('Informe um valor entre 1 e 23 ou 0 para sair!')
+
+    melhor_jogador = 0
+    votos_melhor_jogador = (votos[0])
+
+    for i in range(1, 23):
+        if votos[i] > votos_melhor_jogador:
+            melhor_jogador = i
+            votos_melhor_jogador = votos[i]
+
+    print('---------------------------------------------------------------')
+    print('Resultado da votação:')
+    print('---------------------------------------------------------------')
+    print(f'Foram computados {total_de_votos} votos.')
+    print('---------------------------------------------------------------')
+    print('Jogador Votos           %')
+    for i, votos_jogador in enumerate(votos):
+        if votos_jogador > 0:
+            percentual = (votos_jogador / total_de_votos) * 100
+            print(f'{i + 1:<15} {votos_jogador:<15} {percentual:.1f}%')
+    print(f'O melhor jogador foi o número {melhor_jogador + 1}, com {votos_melhor_jogador} votos, correspondendo a '
+          f'{(votos_melhor_jogador / total_de_votos) * 100:.0f}% do total de votos.')
+
 
 

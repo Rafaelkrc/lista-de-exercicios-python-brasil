@@ -37,3 +37,27 @@ Mostre na tela:
 
 def lancar_dados(*valor_lancamentos):
     """Escreva aqui em baixo a sua solução"""
+    numeros_do_dado = {}
+    total_de_lancamentos = len(valor_lancamentos)
+
+    for v in valor_lancamentos:
+        if v in numeros_do_dado:
+            numeros_do_dado[v] += 1
+        else:
+            numeros_do_dado[v] = 1
+
+    print(f'O dado foi lançado {total_de_lancamentos} vezes')
+
+    dicionario_ordenado = dict(sorted(numeros_do_dado.items()))
+    for numero_dado, frequencia in dicionario_ordenado.items():
+        print(f'O número {numero_dado} caiu {frequencia} vezes')
+
+    numero_mais_frequente = None
+    vezes_mais_frequente = 0
+
+    for numero, frquencia in numeros_do_dado.items():
+        if frquencia > vezes_mais_frequente:
+            numero_mais_frequente = numero
+            vezes_mais_frequente = frquencia
+
+    print(f'O lado com o número {numero_mais_frequente} caiu mais vezes ({vezes_mais_frequente} vezes)')
